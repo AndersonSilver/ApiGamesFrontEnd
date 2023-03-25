@@ -1,8 +1,9 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Acesso usuario
-function acesso(){
+function login(){
     let email= document.getElementById("email").value;
     let senha = document.getElementById("senha").value;
+    
 
     axios.post("http://localhost:3000/autenticacao",{
         email,
@@ -10,8 +11,8 @@ function acesso(){
     }).then( res =>{
 
         let token = res.data.token;
-
-        alert("Logadooooo!", +token);
+        localStorage.setItem("token", token)
+        alert("Logadooooo!" + token);
     }).catch( err =>{
         alert("Usuario nao foi logado!");
     })
